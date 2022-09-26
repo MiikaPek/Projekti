@@ -24,8 +24,8 @@ let customer = new customerSchema ( {
       type: Number
     }
   },
-    { collection: 'customer'}
+    { collection: 'customers'}
   )
 
 // Export model, huom! Parametreina kokoelman nimi ja skeeman nimi, jotka pitää vaihtaa harkkatyön mukaiseksi.
-module.exports = mongoose.model('customer', customer);
+module.exports = mongoose.model('customers', customer);

@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update customer</title>
+    <title>New customer</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>Update customer</h1>
-    <form method="POST" action="/updatecustomer">
-        <label for="name">Name:<input type="text" name="name" id="name"</label>
-        <label for="birthday">Birthday:<input type="text" name="birthday" id="birthday"</label>
-        <label for="email">Email:<input type="text" name="email" id="email"</label>
-        <label for="address">Address:<input type="text" name="address" id="address"</label>
-        <label for="postalcode">Postalcode:<input type="text" name="postalcode" id="postalcode"</label>
-        <label for="phonenumber">Phonenumber:<input type="text" name="phonenumber" id="phonenumber"</label>
+    <form method="POST" action="/updateCustomer">
+        <label for="name">name<input type="text" name="name" id="name"</label>
+        <label for="birthday">birthday<input type="date" name="birthday" id="birthday"</label>
+        <label for="email">email<input type="email" name="email" id="email"</label>
+        <label for="adess">address<input type="text" name="address" id="address"</label>
+        <label for="postalcode">postalcode<input type="number" name="postalcode" id="postalcode"</label>
+        <label for="phonenumber">phonenumber<input type="number" name="phonenumber" id="phonenumber"</label>
         <input type="submit" value="Update">
     </form>
     <script src="update.js" async defer></script>
