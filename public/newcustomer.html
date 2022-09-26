@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New customer</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <h1>Add a new customer</h1>
-    <form method="POST" action="/newCustomer">
-        <label for="name">Name: <input type="text" name="name" id="name"</label><br>
-        <label for="birthday">Birthday: <input type="date" name="birthday" id="birthday"</label><br>
-        <label for="email">Email: <input type="email" name="email" id="email"</label><br>
-        <label for="address">Address: <input type="text" name="address" id="address"</label><br>
-        <label for="postalcode">Postalcode: <input type="number" name="postalcode" id="postalcode"</label><br>
-        <label for="phonenumber">Phonenumber: <input type="number" name="phonenumber" id="phonenumber"</label><br>
-        <input type="submit" value="Add">
-    </form>
-    <script src="front.js" async defer></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>New customer</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <h2>Add a new customer</h2>
+        <form class="form2" method="POST" action="/newCustomer">
+            <label for="name">Name <input type="text" name="name" id="name"</label><br>
+            <label for="birthday">Birthday <input type="date" name="birthday" id="birthday"</label><br>
+            <label for="email">Email <input type="email" name="email" id="email"</label><br>
+            <label for="address">Address <input type="text" name="address" id="address"</label><br>
+            <label for="postalcode">Postalcode <input type="number" name="postalcode" id="postalcode"</label><br>
+            <label for="phonenumber">Phonenumber <input type="number" name="phonenumber" id="phonenumber"</label><br><br>
+            <button>
+                <span class="shadow"></span>
+                <span class="edge"></span>
+                <span class="front text">Add
+                </span>
+            </button><br>
+        </form>
+
+        <script src="front.js" async defer></script>
+
+     
+    </body>
 </html>

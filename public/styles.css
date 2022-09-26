@@ -3,24 +3,17 @@
     --pure-material-primary-rgb: 255, 191, 0;
     --pure-material-onsurface-rgb: 0, 0, 0;
 }
-
 body {
+    margin: 0;
+    padding: 0;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     background: url("https://res.cloudinary.com/finnhvman/image/upload/v1541930411/pattern.png");
+    text-align: center;
 }
-
-.registration {
-    position: relative;
-    border-radius: 8px;
-    padding: 16px 48px;
-    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-    overflow: hidden;
-    background-color: white;
-}
-
 h1 {
     margin: 32px 0;
     font-family: "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system;
@@ -28,111 +21,287 @@ h1 {
     text-align: center;
 }
 
-.registration > label {
-    display: block;
-    margin: 24px 0;
-    width: 320px;
-}
-
-a {
-    color: rgb(var(--pure-material-primary-rgb));
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-button {
-    display: block !important;
-    margin: 32px auto;
-}
-
-.done,
-.progress {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    visibility: hidden;
-}
-
-.done {
-    transition: visibility 0s 1s;
-}
-
-.signed > .done {
-    visibility: visible;
-}
-
-.done > a {
-    display: inline-block;
-    text-decoration: none;
-}
-
-.progress {
-    opacity: 0;
-}
-
-.signed > .progress {
-    animation: loading 4s;
-}
-
-@keyframes loading {
-    0% {
-        visibility: visible;
-    }
-    12.5% {
-        opacity: 0;
-    }
-    25% {
-        opacity: 1;
-    }
-    87.5% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-
-.left-footer,
-.right-footer {
-    position: fixed;
-    padding: 14px;
-    bottom: 14px;
-    color: #555;
-    background-color: #eee;
-    font-family: "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system;
-    font-size: 14px;
-    line-height: 1.5;
-    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-}
-
-.left-footer {
-    left: 0;
-    border-radius: 0 4px 4px 0;
+.form2 {
+    width:340px;
+    height:440px;
+    background:#e6e6e6;
+    border-radius:8px;
+    box-shadow:0 0 40px -10px #000;  
+    padding:20px 30px;
+    max-width:calc(100vw - 40px);
+    box-sizing:border-box;
+    font-family:'Montserrat',sans-serif;
+    position:relative;
     text-align: left;
 }
+input {
+    width:100%;
+    padding:10px;
+    box-sizing:border-box;
+    background:none;
+    outline:none;
+    resize:none;
+    border:0;
+    font-family:'Montserrat',sans-serif;
+    transition:all .3s;
+    border-bottom:2px solid #bebed2;
+}
+input:focus {
+    border-bottom:2px solid #78788c
+}
+p:before {
+    content:attr(type);
+    display:block;
+    margin:28px 0 0;
+    font-size:14px;
+    color:#5a5a5a
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: white;
+}
+td, th {
+    padding: 1em;
+}
+ul {
 
-.right-footer {
-    right: 0;
-    border-radius: 4px 0 0 4px;
-    text-align: right;
+  top: 0;
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #E7E8D1;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+li {
+  float: left;
+  padding: 10px;
+  font-style: italic;
+  font-weight: bold;
+}
+li a {
+  display: block;
+  color: #000;
+  background-color: #A7BEAE;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  border-radius: 10px;
+  border: 1px solid #3179B2;
+}
+li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+.active {
+  background-color: #A7BEAE;
+  color: white;
+}
+label {
+    font-weight: bold;
+}
+button {
+    position: relative;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+    transition: filter 250ms;
+    user-select: none;
+    touch-action: manipulation;
+   }
+   
+   .shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: hsl(0deg 0% 0% / 0.25);
+    will-change: transform;
+    transform: translateY(2px);
+    transition: transform
+       600ms
+       cubic-bezier(.3, .7, .4, 1);
+   }
+   
+   .edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: linear-gradient(
+       to left,
+       hsl(340deg 100% 16%) 0%,
+       hsl(340deg 100% 32%) 8%,
+       hsl(340deg 100% 32%) 92%,
+       hsl(340deg 100% 16%) 100%
+     );
+   }
+   
+   .front {
+    display: block;
+    position: relative;
+    padding: 12px 27px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    color: white;
+    background: hsl(345deg 100% 47%);
+    will-change: transform;
+    transform: translateY(-4px);
+    transition: transform
+       600ms
+       cubic-bezier(.3, .7, .4, 1);
+   }
+   
+   button:hover {
+    filter: brightness(110%);
+   }
+   
+   button:hover .front {
+    transform: translateY(-6px);
+    transition: transform
+       250ms
+       cubic-bezier(.3, .7, .4, 1.5);
+   }
+   
+   button:active .front {
+    transform: translateY(-2px);
+    transition: transform 34ms;
+   }
+   
+   button:hover .shadow {
+    transform: translateY(4px);
+    transition: transform
+       250ms
+       cubic-bezier(.3, .7, .4, 1.5);
+   }
+   
+   button:active .shadow {
+    transform: translateY(1px);
+    transition: transform 34ms;
+   }
+   
+   button:focus:not(:focus-visible) {
+    outline: none;
+   }
+
+ @import url(//fonts.googleapis.com/css?family=Lato:300:400);
+
+
+h1 {
+  font-family: 'Lato', sans-serif;
+  font-weight:300;
+  letter-spacing: 2px;
+  font-size:48px;
+}
+p {
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 1px;
+  font-size:14px;
+  color: #333333;
 }
 
-.left-footer > a,
-.right-footer > a {
-    color: black;
+.header {
+  position:relative;
+  text-align:center;
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+  color:white;
+}
+.logo {
+  width:50px;
+  fill:white;
+  padding-right:15px;
+  display:inline-block;
+  vertical-align: middle;
 }
 
-.left-footer > a:hover,
-.right-footer > a:hover {
-    text-decoration: underline;
+.inner-header {
+  height:65vh;
+  width:100%;
+  margin: 0;
+  padding: 0;
+}
+
+.flex { /*Flexbox for containers*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.waves {
+  position:relative;
+  width: 100%;
+  height:15vh;
+  margin-bottom:-7px; /*Fix for safari gap*/
+  min-height:100px;
+  max-height:150px;
+}
+
+.content {
+  position:relative;
+  height:24vh;
+  text-align:center;
+  background-color: white;
+}
+
+/* Animation */
+
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+}
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+@keyframes move-forever {
+  0% {
+   transform: translate3d(-90px,0,0);
+  }
+  100% { 
+    transform: translate3d(85px,0,0);
+  }
+}
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+  .waves {
+    height:40px;
+    min-height:40px;
+  }
+  .content {
+    height:30vh;
+  }
+  h1 {
+    font-size:24px;
+  }
+}
+.sign {
+    font-size: 30px;
+}
+h2 {
+    background-color: white;
+    font-family: 'Lato', sans-serif;
+    font-weight:300;
+    letter-spacing: 2px;
+    font-size:48px;
 }
