@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 
 //Ota customer käyttöön - muista vaihtaa harkassa oikea tiedoston nimi
 const customer = require('./customerSchema.js');
+const user = require('./userSchema.js');
 
 //Ota mongodb käyttöön -- palataan asiaan, tarviiko asentaa erikseen
 const mongodb = require('mongodb');
@@ -47,12 +48,12 @@ app.get('/customers', function(req,res) {
     })
     })
 
-// Elokuvan lisäys post-funktio
+// Asiakkaan lisäys post-funktio
 app.post('/newCustomer', function (req, res) {
     //console.log(req.body)
     //Varmistetaan, ettei ole ID:tä ja poistetaan jos on.
     delete req.body._id; 
-    //Lisätään collectioniin uusi kirja
+    //Lisätään collectioniin uusi asiakas
     db.collection('customers').insertOne(req.body);
     res.send('Customer is added with following data: ' + JSON.stringify(req.body)); //req.body on JSON-objekti, joten muutetaan se Stringiksi ennen palautusta.
 })
@@ -72,7 +73,7 @@ app.post('/deleteCustomer', function (req, res) {
 
 // Päivitysfunktio
 app.post('/updateCustomer', function(req,res){
-    //Päivitetän collectionista leffa. Kolme parametria: ID, mitä päivitetään ja funktio virheenkäsittelyyn ja palautteeseen.
+    //Päivitetän collectionista asiakas. Kolme parametria: ID, mitä päivitetään ja funktio virheenkäsittelyyn ja palautteeseen.
     db.collection('customers').updateOne({_id:new mongodb.ObjectID(req.body._id)},
     {$set:{name:req.body.name, birthday:req.body.birthday, email:req.body.email, address:req.body.address, postalcode:req.body.postalcode, phonenumber:req.body.phonenumber}},function(err,results){
         if ( err ) {
@@ -83,6 +84,19 @@ app.post('/updateCustomer', function(req,res){
     });
    
 })
+
+
+// Käyttäjän lisäys post-funktio
+app.post('/newUser', function (req, res) {
+    //console.log(req.body)
+    //Varmistetaan, ettei ole ID:tä ja poistetaan jos on.
+    delete req.body._id; 
+    //Lisätään collectioniin uusi käyttäjä
+    db.collection('users').insertOne(req.body);
+    res.send('User is added with following data: ' + JSON.stringify(req.body)); //req.body on JSON-objekti, joten muutetaan se Stringiksi ennen palautusta.
+})
+
+
 
 
 //Laitetaan palvelin kuuntelemaan porttia 8090
