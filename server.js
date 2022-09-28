@@ -97,7 +97,5 @@ app.post('/newUser', function (req, res) {
 })
 
 
-
-
 //Laitetaan palvelin kuuntelemaan porttia 8090
 const server = app.listen(8080, function(){});
