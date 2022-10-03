@@ -114,3 +114,11 @@ function createForm(customer, action) {
   return newCell;
 
 }
+
+function newCustomer() {
+
+  if(!alert('Customer added succesfully!')) {
+    window.location.hreff = "frontpage.html";
+  }
+
+}

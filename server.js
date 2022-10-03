@@ -27,10 +27,10 @@ app.use(bodyparser.urlencoded({extended:false}));
 const uri = 'mongodb+srv://Miika:admin@cluster0.fdgqsic.mongodb.net/customerdb?retryWrites=true&w=majority'
 
 // Muodostetaan yhteys tietokantaan
-mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser:true})
+mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser:true});
 
 // Luodaan vakio tietokantayhteydelle
-const db = mongoose.connection
+const db = mongoose.connection;
 // Näytä ilmoitus, jos yhteys ok
 db.once('open', function() {
     console.log('Tietokantayhteys avattu');
@@ -46,7 +46,7 @@ app.get('/customers', function(req,res) {
             res.send(result);
         }
     })
-    })
+    });
 
 // Asiakkaan lisäys post-funktio
 app.post('/newCustomer', function (req, res) {
@@ -56,7 +56,7 @@ app.post('/newCustomer', function (req, res) {
     //Lisätään collectioniin uusi asiakas
     db.collection('customers').insertOne(req.body);
     res.send('Customer is added with following data: ' + JSON.stringify(req.body)); //req.body on JSON-objekti, joten muutetaan se Stringiksi ennen palautusta.
-})
+});
 
 // Poistofunktio
 app.post('/deleteCustomer', function (req, res) {
@@ -69,12 +69,12 @@ app.post('/deleteCustomer', function (req, res) {
         }
     });
    
-})
+});
 
 // Päivitysfunktio
 app.post('/updateCustomer', function(req,res){
     //Päivitetän collectionista asiakas. Kolme parametria: ID, mitä päivitetään ja funktio virheenkäsittelyyn ja palautteeseen.
-    db.collection('customers').updateOne({_id:new mongodb.ObjectID(req.body._id)},
+    db.collection('customers').updateOne({_id: new mongodb.ObjectId(req.body._id)},
     {$set:{name:req.body.name, birthday:req.body.birthday, email:req.body.email, address:req.body.address, postalcode:req.body.postalcode, phonenumber:req.body.phonenumber}},function(err,results){
         if ( err ) {
             res.send('Error updating: ' + err);
@@ -83,7 +83,7 @@ app.post('/updateCustomer', function(req,res){
         }
     });
    
-})
+});
 
 
 // Käyttäjän lisäys post-funktio
@@ -94,7 +94,7 @@ app.post('/newUser', function (req, res) {
     //Lisätään collectioniin uusi käyttäjä
     db.collection('users').insertOne(req.body);
     res.send('User is added with following data: ' + JSON.stringify(req.body)); //req.body on JSON-objekti, joten muutetaan se Stringiksi ennen palautusta.
-})
+});
 
 
 //Laitetaan palvelin kuuntelemaan porttia 8090
