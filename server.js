@@ -38,7 +38,7 @@ db.once('open', function() {
 
 // Kirjoita get-funktio, req.query toimii nyt
 app.get('/customers', function(req,res) {
-     // Hae kirjat tietokannasta
+     // Hae asiakkaat tietokannasta
     customer.find(req.query, function( err, result) { //tyhjät {} hakuehdossa tuo kaikki, req.query rajaa hakua
         if (err) {
             res.send(err)
@@ -46,7 +46,7 @@ app.get('/customers', function(req,res) {
             res.send(result);
         }
     })
-    });
+});
 
 // Asiakkaan lisäys post-funktio
 app.post('/newCustomer', function (req, res) {
@@ -55,7 +55,7 @@ app.post('/newCustomer', function (req, res) {
     delete req.body._id; 
     //Lisätään collectioniin uusi asiakas
     db.collection('customers').insertOne(req.body);
-    res.send('Customer is added with following data: ' + JSON.stringify(req.body)); //req.body on JSON-objekti, joten muutetaan se Stringiksi ennen palautusta.
+    res.redirect('/frontpage.html');   
 });
 
 // Poistofunktio
@@ -65,7 +65,7 @@ app.post('/deleteCustomer', function (req, res) {
         if ( err ) {
             res.send('Error deleting with following data: ' + err);
         } else {
-            res.send('Customer is deleted with following id: ' + req.body._id);
+            res.redirect('/frontpage.html');
         }
     });
    
@@ -79,12 +79,10 @@ app.post('/updateCustomer', function(req,res){
         if ( err ) {
             res.send('Error updating: ' + err);
         } else {
-            res.send('Customer is updated with following id: ' + req.body._id + ' and following data: ' + JSON.stringify(req.body) );
+            res.redirect('/frontpage.html');
         }
-    });
-   
+    });   
 });
-
 
 // Käyttäjän lisäys post-funktio
 app.post('/newUser', function (req, res) {
@@ -93,9 +91,25 @@ app.post('/newUser', function (req, res) {
     delete req.body._id; 
     //Lisätään collectioniin uusi käyttäjä
     db.collection('users').insertOne(req.body);
-    res.send('User is added with following data: ' + JSON.stringify(req.body)); //req.body on JSON-objekti, joten muutetaan se Stringiksi ennen palautusta.
+    res.redirect('/login.html');
+});
+
+// Tarkastetaan onko käyttäjä olemassa
+app.get('/getUser', function(req,res) {
+    // Hae käyttäjät tietokannasta
+    var user = Document.getElementById("name");
+    
+    user.find(req.query, function( err, result) { 
+       if (err) {
+           res.send(err)
+       } else if (req.name != user) { 
+        alert("User does not exist!")
+       } else {
+        res.redirect('/frontpage.html');
+       }
+   })
 });
 
 
-//Laitetaan palvelin kuuntelemaan porttia 8090
+//Laitetaan palvelin kuuntelemaan porttia 8080
 const server = app.listen(8080, function(){});

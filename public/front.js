@@ -116,9 +116,21 @@ function createForm(customer, action) {
 }
 
 function newCustomer() {
+    alert('New customer added succesfully!');
+}
 
-  if(!alert('Customer added succesfully!')) {
-    window.location.hreff = "frontpage.html";
+function updateCustomer() {
+  alert('Customer updated succesfully!');
+}
+
+function signUp() {
+
+  var user = Document.getElementById("name");
+  var pw = Document.getElementById("password");
+
+  if (user && pw != "") {
+    alert('User registered succesfully!');
+  } else {
+    alert("Username or password cannot be empty!");
   }
-
 }
