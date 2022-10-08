@@ -7,4 +7,4 @@ Onnistuneen kirjautumisen jälkeen ohjaa käyttäjän itse asiakasrekisterin kä
 
 npm start -komennon kirjoittamalla terminaliin sovellus käynnistyy.
 
-Sovellukseen pääsee käynnistämisen jälkeen kirjoitttamlaa osoitteen http://localhost:8080 selaimeen.
+Sovellukseen pääsee käynnistämisen jälkeen kirjoittamalla osoitteen http://localhost:8080 selaimeen.
