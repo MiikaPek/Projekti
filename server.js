@@ -36,14 +36,14 @@ db.once('open', function() {
     console.log('Tietokantayhteys avattu');
 })
 
-// Kirjoita get-funktio, req.query toimii nyt
+// Kirjoita get-funktio
 app.get('/customers', function(req,res) {
      // Hae asiakkaat tietokannasta
     customer.find(req.query, function( err, result) { //tyhjät {} hakuehdossa tuo kaikki, req.query rajaa hakua
         if (err) {
-            res.send(err)
+        res.send(err)
         } else {
-            res.send(result);
+        res.send(result);
         }
     })
 });
@@ -61,33 +61,33 @@ app.post('/newCustomer', function (req, res) {
 // Poistofunktio
 app.post('/deleteCustomer', function (req, res) {
     //Poistetaan collectionista kirja
-    db.collection('customers').deleteOne( { _id: new mongodb.ObjectId(req.body._id)}, function( err, result){
-        if ( err ) {
-            res.send('Error deleting with following data: ' + err);
+    db.collection('customers').deleteOne({ _id: new mongodb.ObjectId(req.body._id)}, function( err, result) {
+        if (err) {
+        res.send('Error deleting with following data: ' + err);
         } else {
-            res.redirect('/frontpage.html');
+        res.redirect('/frontpage.html');
         }
     });
    
 });
 
 // Päivitysfunktio
-app.post('/updateCustomer', function(req,res){
+app.post('/updateCustomer', function(req, res){
     //Päivitetän collectionista asiakas. Kolme parametria: ID, mitä päivitetään ja funktio virheenkäsittelyyn ja palautteeseen.
-    db.collection('customers').updateOne({_id: new mongodb.ObjectId(req.body._id)},
-    {$set:{name:req.body.name, birthday:req.body.birthday, email:req.body.email, address:req.body.address, postalcode:req.body.postalcode, phonenumber:req.body.phonenumber}},function(err,results){
-        if ( err ) {
-            res.send('Error updating: ' + err);
+    db.collection('customers').updateOne({ _id: new mongodb.ObjectId(req.body._id)},
+    {$set: {name: req.body.name, birthday: req.body.birthday, email: req.body.email, address: req.body.address, 
+        postalcode: req.body.postalcode, phonenumber: req.body.phonenumber}}, function(err, results) {
+        if (err) {
+        res.send('Error updating: ' + err);
         } else {
-            res.redirect('/frontpage.html');
+        //    res.send(results);
+        res.redirect('/frontpage.html');
         }
     });   
 });
 
 // Käyttäjän lisäys post-funktio
 app.post('/newUser', function (req, res) {
-    //console.log(req.body)
-    //Varmistetaan, ettei ole ID:tä ja poistetaan jos on.
     delete req.body._id; 
     //Lisätään collectioniin uusi käyttäjä
     db.collection('users').insertOne(req.body);
@@ -96,20 +96,16 @@ app.post('/newUser', function (req, res) {
 
 // Tarkastetaan onko käyttäjä olemassa
 app.get('/getUser', function(req,res) {
-    // Hae käyttäjät tietokannasta
-    var user = Document.getElementById("name");
-    
-    user.find(req.query, function( err, result) { 
+   user.find(req.query, function( err, result) {
        if (err) {
-           res.send(err)
-       } else if (req.name != user) { 
-        alert("User does not exist!")
-       } else {
+        res.send(err)
+       } else if (result.length == 0) {
+        res.redirect('/login2.html');
+       } else { 
         res.redirect('/frontpage.html');
        }
    })
 });
-
 
 //Laitetaan palvelin kuuntelemaan porttia 8080
 const server = app.listen(8080, function(){});

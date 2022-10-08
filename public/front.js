@@ -1,5 +1,6 @@
 // Luo taulukon kirjoista etusivulle
 function readCustomer() {
+
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.open("GET", "/customers",true);
   xmlhttp.send();
@@ -115,22 +116,26 @@ function createForm(customer, action) {
 
 }
 
+// Annetaan palaute onnistuneesta asiakkaan lisäyksestä
 function newCustomer() {
-    alert('New customer added succesfully!');
+  alert('New customer added succesfully!');
 }
 
+// Annetaan paulaute onnistuneesta aasiakkaan päivityksestä
 function updateCustomer() {
   alert('Customer updated succesfully!');
 }
 
+// Tarkistetaan että käyttäjä ja salasana eivät ole tyhjiä
 function signUp() {
 
-  var user = Document.getElementById("name");
+  var username = Document.getElementById("name");
   var pw = Document.getElementById("password");
 
-  if (user && pw != "") {
-    alert('User registered succesfully!');
-  } else {
-    alert("Username or password cannot be empty!");
-  }
+    if (username && pw != "") {
+    return true;
+    } else {
+    return false;
+    }
 }
+
