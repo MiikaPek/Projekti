@@ -68,11 +68,10 @@ app.post('/deleteCustomer', function (req, res) {
         res.redirect('/frontpage.html');
         }
     });
-   
 });
 
 // Päivitysfunktio
-app.post('/updateCustomer', function(req, res){
+app.post('/updateCustomer', function(req, res) {
     //Päivitetän collectionista asiakas. Kolme parametria: ID, mitä päivitetään ja funktio virheenkäsittelyyn ja palautteeseen.
     db.collection('customers').updateOne({ _id: new mongodb.ObjectId(req.body._id)},
     {$set: {name: req.body.name, birthday: req.body.birthday, email: req.body.email, address: req.body.address, 
@@ -80,7 +79,6 @@ app.post('/updateCustomer', function(req, res){
         if (err) {
         res.send('Error updating: ' + err);
         } else {
-        //    res.send(results);
         res.redirect('/frontpage.html');
         }
     });   
